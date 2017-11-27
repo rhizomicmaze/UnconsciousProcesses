@@ -111,8 +111,7 @@ function setup() {
 	r_anim.show();
 	r_anim.position(510, 220);
 	image(welcome, 0, 0);
-	// WelcomeScreen();
-	frameRate(5);
+	frameRate(6);
 	colorMode(HSB, 100);
 	imageMode(CENTER);
 	angleMode(DEGREES);
@@ -242,15 +241,6 @@ function keyPressed() {
 		} //CHARACTERS
 		// (Point and press C, or hold n' drag MLB and press C multiple times)
 
-		if (keyCode === 65) {
-			if (mouseIsPressed) {
-				sound.pause();
-				fx[9].loop();
-				angel.show();
-				angel.position(430, 500);
-			}
-		} //ANGELS
-
 	}
 
 	// __________________________SPECIALS______________________________________________________
@@ -280,6 +270,15 @@ function keyPressed() {
 			rndgif[1].position(330, 500);
 			if (mouseIsPressed) {}
 		} //RANDOM MODE
+
+
+		if (keyCode === 65) {
+			if (mouseIsPressed) {
+				fx[9].loop();
+				angel.show();
+				angel.position(430, 500);
+			}
+		} //ANGELS
 
 	}
 }
@@ -325,19 +324,21 @@ function draw() {
 	// __________________________ELEMENTS______________________________________________________	
 	{
 		if (keyIsDown(65)) { //A
-			fx[10].play();
 			push();
 			fillersrotation.placePrecisely();
 			fillersrotation.displayAngels();
+			pop();
+			fx[10].play();
 			if (mouseIsPressed) {
 				fx[10].stop(0);
-				// sound.stop();
+				sound.pause();
+				push();
 				fillersrotation.placeRandomly();
 				fillersrotation.displayAngels();
 				fillersrotation.placeRandomly();
 				fillersrotation.displayAngels();
+				pop();
 			}
-			pop();
 		} //ANGELS
 		// (Point and press A, or hold A and drag mouse across the canvas, or hold MLB then hold A and drag mouse)
 
@@ -485,7 +486,10 @@ function draw() {
 			fx[8].play();
 			image(pick13, mouseX, mouseY);
 		} //LOGOS
+	}
 
+	// __________________________SPECIALS______________________________________________________	
+	{
 		if (keyIsDown(191)) { //SLASH
 			push();
 			fillersrotation.placeRandomly();
@@ -496,15 +500,14 @@ function draw() {
 				rndgif[2].position(200, 200);
 				rndgif[3].show();
 				rndgif[3].position(200, 1150);
+				push();
 				list = [pick8, pick16];
 				glist = random(list);
 				image(glist, prw, prh);
+				pop();
 			}
 		} //RANDOM MODE
-	}
 
-	// __________________________SPECIALS______________________________________________________	
-	{
 		if (keyIsDown(88)) { //X  
 			push();
 			fillersrotation.placeRandomly();
@@ -529,20 +532,25 @@ function keyReleased() {
 		pentagram.hide();
 		fire.hide();
 		xxx.stop();
-		sound.play();
+		if (sound.isPaused()) {
+			sound.play();
+		}
 	} //CHAOS MODE
 	if (keyCode === 65) {
 		angel.hide();
 		fx[9].stop();
-		sound.play();
+		if (sound.isPaused()) {
+			sound.play();
+		}
 	} //ANGELS
 	if (keyCode === 191) { //SLASH
-
 		rndgif[1].hide();
 		rndgif[2].hide();
 		rndgif[3].hide();
 		rndsound.stop();
-		sound.play();
+		if (sound.isPaused()) {
+			sound.play();
+		}
 	} //RANDOM MODE
 }
 
@@ -700,7 +708,7 @@ function HUD() {
 			pop();
 		}
 	}
-	for (var x = 0; x <= 300; x += 300) {
+	for (x = 0; x <= 300; x += 300) {
 		line(0, 0, 15, 0);
 		line(0, 0, 0, 15);
 		line(0, 100, 15, 100);
