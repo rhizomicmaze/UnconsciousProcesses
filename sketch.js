@@ -65,7 +65,7 @@ function preload() {
 				sgntr[i] = loadImage('images/badges/badge' + i + '.png');
 			}
 			for (i = 4; i < 9; i++) {
-				fllrs[i] = loadImage('images/fillers' + i + '.png');
+				fllrs[i] = loadImage('images/fillers/fillers' + i + '.png');
 			}
 			for (i = 0; i < 6; i++) {
 				wlvs[i] = loadImage('images/wolves/wolves' + i + '.jpg');
@@ -74,7 +74,7 @@ function preload() {
 				mtls[i] = loadImage('images/metals/preciousmetals' + i + '.png');
 			}
 			for (i = 0; i < 4; i++) {
-				trans[i] = loadImage('images/trans/transparency' + i + '.png');
+				trans[i] = loadImage('images/transparency/transparency' + i + '.png');
 			}
 			for (i = 0; i < 7; i++) {
 				angls[i] = loadImage('images/angelarium/angel' + i + '.png');
