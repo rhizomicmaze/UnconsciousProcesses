@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-# Че, Руся, замутим коллаб?
+
 
 <a href="https://rhizomicmaze.github.io/unconsciousprocesses/"><b>Давай!</b></a> 
 
